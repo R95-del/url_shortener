@@ -1,0 +1,24 @@
+
+<head>
+  <%= stylesheet_link_tag 'index', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+
+
+<h1>All URLs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Long URL</th>
+      <th>Short URL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @urls.each do |url| %>
+      <tr>
+        <td><%= url.long_url %></td>
+        <td><%= link_to url.short_url, url_path(url.short_url) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

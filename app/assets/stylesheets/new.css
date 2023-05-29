@@ -1,0 +1,16 @@
+
+.field {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+.long-url {
+  margin-bottom: 10px;
+}
+
+.short-url {
+  margin-top: 10px;
+}
