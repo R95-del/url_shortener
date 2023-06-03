@@ -11,13 +11,15 @@
     <tr>
       <th>Long URL</th>
       <th>Short URL</th>
+      <th>Edit </th>
     </tr>
   </thead>
   <tbody>
     <% @urls.each do |url| %>
       <tr>
         <td><%= url.long_url %></td>
-        <td><%= link_to url.short_url, url_path(url.short_url) %></td>
+        <td><%= link_to url.short_url, url.long_url %></td>
+        <td><%= link_to 'Edit', edit_url_path(url) %></td>
       </tr>
     <% end %>
   </tbody>

@@ -8,6 +8,19 @@ class UrlsController < ApplicationController
     @url = Url.new
   end
 
+  def edit
+    @url = Url.find(params[:id])
+  end
+
+  def update
+    @url = Url.find(params[:id])
+    if @url.update(url_params)
+      redirect_to @url, notice: "URL updated successfully"
+    else
+      render :edit
+    end
+  end
+
   def create
     @url = Url.find_by(long_url: url_params[:long_url])
 
@@ -38,7 +51,7 @@ class UrlsController < ApplicationController
 
 
   def show
-    @url = Url.find(params[:id])
+    @url = Url.find_by_short_url(params[:id])
     redirect_to @url.long_url, allow_other_host: true and return if params[:redirect].present?
   end
 

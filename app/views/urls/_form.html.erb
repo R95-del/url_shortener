@@ -1,0 +1,28 @@
+<%= form_with(model: @url, url: @url.persisted? ? url_path(@url) : urls_path, local: true) do |form| %>
+  <% if @url.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@url.errors.count, "error") %> prohibited this URL from being saved:</h2>
+
+      <ul>
+      <% @url.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :long_url %>
+    <%= form.text_field :long_url %>
+  </div>
+
+  <% if @url.short_url.present? %>
+    <div class="field">
+      <strong>Shortened URL:</strong> <%= link_to @url.short_url, @url.short_url %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit "Shorten URL" %>
+  </div>
+<% end %>
